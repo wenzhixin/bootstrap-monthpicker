@@ -1,0 +1,47 @@
+.mp-monthpicker {
+	position: relative;
+	display: inline-block;
+}
+.mp-dialog {
+	position: absolute;
+	z-index: 1000;
+	width: 282px;
+	height: 260px;
+	background: #fff;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	display: none;
+}
+.mp-title {
+	text-align: center;
+	line-height: 40px;
+	background: #92cade;
+	color: #fff;
+	border-radius: 5px 5px 0 0;
+}
+.mp-title i {
+	cursor: pointer;
+}
+.mp-content {
+}
+.mp-content ul {
+	list-style: none;
+	margin: 0;
+	padding: 20px;
+}
+.mp-content li {
+	text-align: center;
+	line-height: 48px;
+	float: left;
+	margin: 6px;
+	padding: 0;
+	width: 48px;
+	height: 48px;
+	border: 2px dotted #ccc;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.mp-content li:hover, .mp-content li.active {
+	background: #f5f9fc;
+	border: 2px dotted #ffaaaa;
+}

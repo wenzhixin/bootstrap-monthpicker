@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="bootstrap-monthpicker.css" />
+    <link rel="stylesheet" href="//wenzhixin.net.cn/css/fork.css" />
+	<style>
+	  body {
+	    margin-top: 50px;
+	    text-align: center;
+	  }
+	</style>
+</head>
+<body>
+  <a href="https://github.com/wenzhixin/bootstrap-monthpicker" class="fork_me"></a>
+  
+  <span>
+    <label>Demo 1:</label>
+    <input type="text" value="2013-10" />
+  </span>
+	<span style="margin-left: 50px;">
+	  <label>Demo 2:</label>
+	  <span id="month">2013-10</span>
+	</span>
+	
+	<script src="assets/jquery.min.js"></script>
+	<script src="bootstrap-monthpicker.js"></script>
+	<script>
+	  $(function() {
+	    $('input, #month').bootstrapMonthpicker();
+	  });
+	</script>
+	
+	<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-36708951-1', 'wenzhixin.net.cn');
+      ga('send', 'pageview');
+    </script>
+</body>
+</html>
