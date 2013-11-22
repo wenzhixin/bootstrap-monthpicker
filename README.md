@@ -18,5 +18,9 @@ ___
 ```
 
 ```javascript
-$('input, #month').bootstrapMonthpicker();
+$('input, #month').bootstrapMonthpicker({
+	onSelect: function(value) {
+		console.log(value);
+	}
+});
 ```

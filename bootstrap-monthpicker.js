@@ -132,6 +132,7 @@
 			this.month = $(event.currentTarget).data('month');
 			this.value = [this.year, (this.month + 1 < 10 ? '0' : '') + (this.month + 1)].join('-');
 			val(this.$el, this.value);
+			this.options.onSelect(this.value);
 			this.$dialog.hide();
 		}
 	};
@@ -168,6 +169,6 @@
 	};
 	
 	$.fn.bootstrapMonthpicker.defaults = {
-		
+		onSelect: function() { return false; }
 	};
 })(jQuery);
