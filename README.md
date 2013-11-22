@@ -2,9 +2,13 @@
 
 bootstrap3 月份选择器. 
 
+___
+
 ### 演示：
 
-[这里](http://wenzhixin.net.cn/p/bootstrap-table/)
+[这里](http://wenzhixin.net.cn/p/bootstrap-monthpicker/)
+
+___
 
 ### 使用：
 
