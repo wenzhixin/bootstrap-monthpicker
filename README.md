@@ -1,6 +1,6 @@
 ## bootstrap monthpicker
 
-bootstrap3 月份选择器. 
+bootstrap3 月份选择器。
 
 ___
 
