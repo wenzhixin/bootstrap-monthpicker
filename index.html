@@ -29,7 +29,11 @@
 	<script src="bootstrap-monthpicker.js"></script>
 	<script>
 	  $(function() {
-	    $('input, #month').bootstrapMonthpicker();
+	    $('input').bootstrapMonthpicker();
+	    $('#month').bootstrapMonthpicker({
+	      from: '2013-05',
+	      to: '2013-11'
+	    });
 	  });
 	</script>
 	

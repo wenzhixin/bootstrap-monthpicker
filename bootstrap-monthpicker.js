@@ -36,6 +36,16 @@
 			return $el.is('input') ? $el.val() : $el.text();
 		}
 	}
+	
+	function getYM(value) {
+		if ((/^\d{4}-\d{2}$/).test(value)) {
+			return {
+				year: +(value.split('-')[0]),
+				month: +(value.split('-')[1]) - 1
+			};
+		}
+		return null;
+	}
 
 	function Monthpicker($el) {
 		this.$el = $el;
@@ -50,7 +60,7 @@
 			this.$el.off('click').on('click', this.show);
 			this.$prev.off('click').on('click', this.prev);
 			this.$next.off('click').on('click', this.next);
-			this.$content.find('li').off('click').on('click', this.select);
+			this.$content.find('li:not(.disabled)').off('click').on('click', this.select);
 		},
 		
 		init: function(options) {
@@ -102,13 +112,36 @@
 				this.year = date.getFullYear();
 				this.month = date.getMonth();
 			} else {
-				this.year = this.value.split('-')[0];
-				this.month = this.value.split('-')[1] - 1;
+				this.year = +(this.value.split('-')[0]);
+				this.month = +(this.value.split('-')[1]) - 1;
 			}
 			
 			this.$title.text(this.year);
 			this.$content.find('li').removeClass('active')
 				.eq(this.month).addClass('active');
+				
+			this.updateViews();
+		},
+		
+		updateViews: function() {
+			var from = getYM(this.options.from),
+				to = getYM(this.options.to);
+			
+			this.$prev.show();
+			this.$next.show();
+			this.$content.find('li').removeClass('disabled');
+			if (from) {
+				if (this.year === from.year) {
+					this.$prev.hide();
+					this.$content.find('li:lt(' + from.month + ')').addClass('disabled');
+				}
+			}
+			if (to) {
+				if (this.year === to.year) {
+					this.$next.hide();
+					this.$content.find('li:gt(' + to.month + ')').addClass('disabled');
+				}
+			}
 		},
 		
 		show: function() {
@@ -122,10 +155,12 @@
 		
 		prev: function() {
 			this.$title.text(--this.year);
+			this.updateViews();
 		},
 		
 		next: function() {
 			this.$title.text(++this.year);
+			this.updateViews();
 		},
 		
 		select: function(event) {
@@ -169,6 +204,8 @@
 	};
 	
 	$.fn.bootstrapMonthpicker.defaults = {
+		from: '',
+		to: '',
 		onSelect: function() { return false; }
 	};
 })(jQuery);

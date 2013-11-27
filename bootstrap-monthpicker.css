@@ -45,3 +45,9 @@
 	background: #f5f9fc;
 	border: 2px dotted #ffaaaa;
 }
+.mp-content li.disabled, .mp-content li.disabled:hover {
+	color: #e7e7e7;
+	background: #fff;
+	border: 2px dotted #e7e7e7;
+	cursor: default;
+}
