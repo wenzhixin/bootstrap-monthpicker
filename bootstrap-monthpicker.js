@@ -3,6 +3,8 @@
  * @version 0.0.1
  * @github https://github.com/wenzhixin/bootstrap-monthpicker
  * @blog http://wenzhixin.net.cn
+ * 
+ * A minor bug fixed by Jeffery Zhao <zzy8200@gmail.com>
  */
 
 (function($) {
@@ -60,7 +62,7 @@
 			this.$el.off('click').on('click', this.show);
 			this.$prev.off('click').on('click', this.prev);
 			this.$next.off('click').on('click', this.next);
-			this.$content.find('li:not(.disabled)').off('click').on('click', this.select);
+			this.$content.find('li').off('click').on('click',this.select);
 		},
 		
 		init: function(options) {
@@ -129,7 +131,7 @@
 			
 			this.$prev.show();
 			this.$next.show();
-			this.$content.find('li').removeClass('disabled');
+			this.$content.find('li').removeAttr('class');
 			if (from) {
 				if (this.year === from.year) {
 					this.$prev.hide();
@@ -164,11 +166,13 @@
 		},
 		
 		select: function(event) {
+			if($(event.currentTarget).attr('class')!='disabled'){
 			this.month = $(event.currentTarget).data('month');
 			this.value = [this.year, (this.month + 1 < 10 ? '0' : '') + (this.month + 1)].join('-');
 			val(this.$el, this.value);
 			this.options.onSelect(this.value);
 			this.$dialog.hide();
+			}
 		}
 	};
 
