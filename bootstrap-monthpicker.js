@@ -52,7 +52,7 @@
     function Monthpicker($el) {
         this.$el = $el;
 
-        bindAll(this, 'show', 'prev', 'next', 'select');
+        bindAll(this, 'show', 'prev', 'next', 'select', 'hide');
     }
 
     Monthpicker.prototype = {
@@ -63,6 +63,7 @@
             this.$prev.off('click').on('click', this.prev);
             this.$next.off('click').on('click', this.next);
             this.$content.find('li').off('click').on('click',this.select);
+            this.$document.off('click').on('click', this.hide);
         },
 
         init: function(options) {
@@ -77,6 +78,8 @@
             if (this.$el.is('input')) {
                 this.$el.prop('readonly', true);
             }
+
+            this.$document = $(document);
 
             this.$dialog = $([
                 '<div class="mp-dialog">',
@@ -153,6 +156,14 @@
             }
             this.initDate();
             this.$dialog.show();
+        },
+
+        hide: function(event) {
+            if(!$(event.target).closest('.mp-monthpicker').length && !$(event.target).is('.mp-monthpicker')) {
+                if($('.mp-dialog').is(":visible")) {
+                    $('.mp-dialog').hide();
+                }
+            }
         },
 
         prev: function() {
